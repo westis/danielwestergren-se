@@ -7,45 +7,36 @@ import {
   CogIcon,
   PlayIcon,
 } from "@sanity/icons";
-import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 
-export const structure = (S: any, context: any) =>
+export const structure = (S) =>
   S.list()
     .title("Content")
     .items([
       S.listItem()
         .title("Home Page")
-        .icon(HomeIcon)
-        .child(
-          S.list()
-            .title("Home Page")
-            .items([
-              S.documentListItem().schemaType("homePage").id("homePage"),
-              S.listItem()
-                .title("Services")
-                .icon(CaseIcon)
-                .child(S.documentTypeList("service")),
-              S.listItem()
-                .title("Testimonials")
-                .icon(CommentIcon)
-                .child(S.documentTypeList("testimonial")),
-              S.listItem()
-                .title("Community Links")
-                .icon(UsersIcon)
-                .child(S.documentTypeList("communityItem")),
-            ])
-        ),
-      orderableDocumentListDeskItem({
-        type: "page",
-        title: "Pages",
-        icon: DocumentIcon,
-        S,
-        context,
-      }),
-
+        .child(S.document().schemaType("homePage").documentId("homePage")),
+      S.listItem()
+        .title("Pages")
+        .schemaType("page")
+        .child(S.documentTypeList("page").title("Pages")),
+      S.listItem()
+        .title("Services")
+        .schemaType("service")
+        .child(S.documentTypeList("service").title("Services")),
+      S.listItem()
+        .title("Testimonials")
+        .schemaType("testimonial")
+        .child(S.documentTypeList("testimonial").title("Testimonials")),
+      S.listItem()
+        .title("Community Links")
+        .schemaType("communityItem")
+        .child(S.documentTypeList("communityItem").title("Community Links")),
+      S.listItem()
+        .title("Navigation")
+        .schemaType("navigation")
+        .child(S.documentTypeList("navigation").title("Navigation")),
       S.listItem()
         .title("Site Settings")
-        .icon(CogIcon)
         .child(
           S.document().schemaType("siteSettings").documentId("siteSettings")
         ),

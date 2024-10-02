@@ -1,19 +1,23 @@
-import siteSettings from "./siteSettings";
-import testimonial from "./testimonial";
-import page from "./page";
-import homePage from "./homePage";
-import service from "./service";
-import communityItem from "./communityItem";
-import servicePage from "./servicePage";
-import test from "./test";
+import { pageType } from "../schemaTypes/documents/page";
+import homePage from "../schemaTypes/documents/homePage";
+import navigation from "../schemaTypes/documents/navigation";
+import siteSettings from "../schemaTypes/documents/siteSettings";
+import servicePage from "../schemaTypes/documents/servicePage";
+
+import { textWithIllustration } from "../schemaTypes/blocks/textWithIllustration";
+import { form } from "../schemaTypes/blocks/form";
+import { video } from "../schemaTypes/blocks/video";
 
 export const schemaTypes = [
-  siteSettings,
-  testimonial,
-  page,
+  // Documents
+  pageType,
   homePage,
-  service,
-  communityItem,
-  test,
+  navigation,
+  siteSettings,
   servicePage,
+
+  // Objects
+  textWithIllustration,
+  form,
+  video,
 ];
