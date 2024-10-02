@@ -1,11 +1,5 @@
 import { defineField, defineType } from "sanity";
 import { CaseIcon } from "@sanity/icons";
-import { preview } from "sanity-plugin-icon-picker";
-
-const options = {
-  providers: ["fa", "mdi", "hi"],
-  outputFormat: "react",
-};
 
 export default defineType({
   name: "service",
@@ -18,23 +12,24 @@ export default defineType({
     defineField({
       name: "icon",
       title: "Icon",
-      type: "iconPicker",
-      options,
+      type: "icon",
+      description: "Select an icon to represent this service",
     }),
   ],
   preview: {
     select: {
       title: "name",
       subtitle: "description",
-      provider: "icon.provider",
-      name: "icon.name",
+      icon: "icon",
     },
-    prepare(selection) {
-      const { title, subtitle, provider, name } = selection;
+    prepare({ title, subtitle, icon }) {
       return {
         title,
-        subtitle,
-        media: preview({ provider, name, options }),
+        subtitle:
+          subtitle && subtitle.length > 50
+            ? subtitle.substring(0, 50) + "..."
+            : subtitle,
+        media: icon ? icon : CaseIcon,
       };
     },
   },

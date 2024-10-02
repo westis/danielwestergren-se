@@ -2,7 +2,7 @@ import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./schemas";
-import { iconPicker } from "sanity-plugin-icon-picker";
+import { iconify } from "sanity-plugin-iconify";
 import { structure } from "./deskStructure";
 
 export default defineConfig({
@@ -14,10 +14,13 @@ export default defineConfig({
 
   plugins: [
     structureTool({
-      structure, // Add this line to use your custom structure
+      structure,
     }),
     visionTool(),
-    iconPicker(),
+    iconify({
+      collections: ["fa", "mdi", "heroicons"],
+      showName: false,
+    }),
   ],
 
   schema: {

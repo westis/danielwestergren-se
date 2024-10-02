@@ -4,6 +4,8 @@ import page from "./page";
 import homePage from "./homePage";
 import service from "./service";
 import communityItem from "./communityItem";
+import servicePage from "./servicePage";
+import test from "./test";
 
 export const schemaTypes = [
   siteSettings,
@@ -12,4 +14,6 @@ export const schemaTypes = [
   homePage,
   service,
   communityItem,
+  test,
+  servicePage,
 ];

@@ -25,19 +25,5 @@ export default defineType({
       type: "text",
       description: "The testimonial content",
     }),
-    defineField({
-      name: "image",
-      title: "Image",
-      type: "image",
-      description: "A photo of the person giving the testimonial",
-      fields: [
-        {
-          name: "alt",
-          type: "string",
-          title: "Alternative Text",
-          description: "A description of the image for accessibility and SEO",
-        },
-      ],
-    }),
   ],
 });

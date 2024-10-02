@@ -12,12 +12,20 @@ export default defineType({
       title: "Page Title",
       type: "string",
     }),
+
     defineField({
       name: "hero",
       title: "Hero Section",
       type: "object",
       fields: [
-        defineField({ name: "image", title: "Hero Image", type: "image" }),
+        defineField({
+          name: "image",
+          title: "Hero Image",
+          type: "image",
+          options: {
+            hotspot: true, // Enable hotspot functionality
+          },
+        }),
         defineField({ name: "title", title: "Hero Title", type: "string" }),
         defineField({ name: "subtitle", title: "Subtitle", type: "string" }),
         defineField({
@@ -34,6 +42,12 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "servicesTitle",
+      title: "Services Section Title",
+      type: "string",
+      description: "The title for the Services section",
+    }),
+    defineField({
       name: "services",
       title: "Featured Services",
       type: "array",
@@ -41,12 +55,15 @@ export default defineType({
         {
           type: "reference",
           to: [{ type: "service" }],
-          options: {
-            disableNew: true,
-          },
         },
       ],
       validation: (Rule) => Rule.max(4),
+    }),
+    defineField({
+      name: "testimonialsTitle",
+      title: "Testimonials Section Title",
+      type: "string",
+      description: "The title for the Testimonials section",
     }),
     defineField({
       name: "testimonials",
@@ -56,11 +73,14 @@ export default defineType({
         {
           type: "reference",
           to: [{ type: "testimonial" }],
-          options: {
-            disableNew: true,
-          },
         },
       ],
+    }),
+    defineField({
+      name: "communityTitle",
+      title: "Community Section Title",
+      type: "string",
+      description: "The title for the Community section",
     }),
     defineField({
       name: "communityItems",
@@ -70,11 +90,14 @@ export default defineType({
         {
           type: "reference",
           to: [{ type: "communityItem" }],
-          options: {
-            disableNew: true,
-          },
         },
       ],
+    }),
+    defineField({
+      name: "isHomePage",
+      title: "Is Home Page",
+      type: "boolean",
+      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

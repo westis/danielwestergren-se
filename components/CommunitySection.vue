@@ -4,23 +4,23 @@
       <h2
         class="text-3xl font-bold text-gray-900 dark:text-white text-center mb-8"
       >
-        Ultramarathon Community
+        {{ sectionTitle }}
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div
-          v-for="(community, index) in communities"
-          :key="index"
+          v-for="item in communityItems"
+          :key="item._id"
           class="bg-gray-100 dark:bg-gray-800 rounded-lg p-6"
         >
           <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-            {{ community.title }}
+            {{ item.name }}
           </h3>
           <p class="text-gray-600 dark:text-gray-300 mb-4">
-            {{ community.description }}
+            {{ item.description }}
           </p>
-          <Button size="sm" variant="secondary">{{
-            community.buttonText
-          }}</Button>
+          <Button size="sm" variant="secondary" @click="handleVisit(item.link)">
+            Besök {{ item.name }}
+          </Button>
         </div>
       </div>
     </div>
@@ -28,20 +28,45 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from "vue";
 import { Button } from "@/components/ui/button";
+import { client } from "@/sanityClient";
 
-const communities = [
-  {
-    title: "ultramarathon.se",
-    description:
-      "Din guide till ultralöpning i Sverige, hem för podden Ultraaktuellt",
-    buttonText: "Besök ultramarathon.se",
-  },
-  {
-    title: "Ultrarunning News",
-    description:
-      "De senaste nyheterna inom ultralöpning - internationell täckning",
-    buttonText: "Besök Ultrarunning News",
-  },
-];
+interface CommunityItem {
+  _id: string;
+  name: string;
+  description: string;
+  link: string;
+}
+
+const communityItems = ref<CommunityItem[]>([]);
+const sectionTitle = ref("");
+
+const handleVisit = (link: string) => {
+  window.open(link, "_blank");
+};
+
+onMounted(async () => {
+  const query = `
+    *[_type == "homePage" && isHomePage == true][0] {
+      communityTitle,
+      "communityItems": communityItems[]-> {
+        _id,
+        name,
+        description,
+        link
+      }
+    }
+  `;
+
+  try {
+    const result = await client.fetch(query);
+    if (result) {
+      sectionTitle.value = result.communityTitle || "Ultramarathon Community";
+      communityItems.value = result.communityItems?.filter(Boolean) || [];
+    }
+  } catch (error) {
+    console.error("Error fetching community items:", error);
+  }
+});
 </script>

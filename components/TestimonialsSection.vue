@@ -4,19 +4,19 @@
       <h2
         class="text-3xl font-bold text-gray-900 dark:text-white text-center mb-8"
       >
-        Referenser
+        {{ sectionTitle }}
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div
-          v-for="(testimonial, index) in testimonials"
-          :key="index"
+          v-for="testimonial in testimonials"
+          :key="testimonial._id"
           class="bg-white dark:bg-gray-700 rounded-lg p-6"
         >
           <p class="text-gray-600 dark:text-gray-300 italic mb-4">
-            "{{ testimonial.quote }}"
+            "{{ testimonial.content }}"
           </p>
-          <p class="text-gray-900 dark:text-white font-semibold text-right">
-            - {{ testimonial.author }}, {{ testimonial.role }}
+          <p class="text-gray-900 dark:text-white font-semibold text-end">
+            - {{ testimonial.name }}, {{ testimonial.role }}
           </p>
         </div>
       </div>
@@ -25,23 +25,40 @@
 </template>
 
 <script setup lang="ts">
-const testimonials = [
-  {
-    quote:
-      "Daniels expertis och energi lyfte vår ultralöpning till en ny nivå.",
-    author: "Anna Svensson",
-    role: "Arrangör",
-  },
-  {
-    quote: "En oumbärlig röst inom svensk ultralöpning.",
-    author: "Erik Andersson",
-    role: "Löpare",
-  },
-  {
-    quote:
-      "Daniels liverapportering gjorde det möjligt för oss att följa loppet i realtid.",
-    author: "Maria Nilsson",
-    role: "Tävlingsledare",
-  },
-];
+import { ref, onMounted } from "vue";
+import { client } from "@/sanityClient";
+
+interface Testimonial {
+  _id: string;
+  content: string;
+  name: string;
+  role: string;
+}
+
+const testimonials = ref<Testimonial[]>([]);
+const sectionTitle = ref("");
+
+onMounted(async () => {
+  const query = `
+    *[_type == "homePage" && isHomePage == true][0] {
+      testimonialsTitle,
+      "testimonials": testimonials[]-> {
+        _id,
+        content,
+        name,
+        role
+      }
+    }
+  `;
+
+  try {
+    const result = await client.fetch(query);
+    if (result) {
+      sectionTitle.value = result.testimonialsTitle || "Referenser";
+      testimonials.value = result.testimonials?.filter(Boolean) || [];
+    }
+  } catch (error) {
+    console.error("Error fetching testimonials:", error);
+  }
+});
 </script>
