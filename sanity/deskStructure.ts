@@ -5,6 +5,7 @@ import {
   UsersIcon,
   DocumentIcon,
   CogIcon,
+  PlayIcon,
 } from "@sanity/icons";
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 

@@ -8,13 +8,18 @@
     "deploy": "sanity deploy"
   },
   "dependencies": {
+    "@codingcatdev/sanity-plugin-podcast-rss": "^1.0.0",
     "@sanity/client": "^6.22.0",
     "@sanity/icons": "^3.4.0",
     "@sanity/orderable-document-list": "^1.2.2",
     "@sanity/preview-kit": "^5.1.1",
     "@sanity/vision": "^3.59.0",
+    "get-video-id": "^4.1.7",
+    "nanoid": "^5.0.7",
+    "react-icons": "^5.3.0",
     "sanity": "^3.59.0",
     "sanity-plugin-icon-picker": "^3.3.0",
+    "sanity-plugin-media": "^2.3.2",
     "styled-components": "^6.1.13"
   }
 }
