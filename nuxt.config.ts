@@ -2,7 +2,12 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt"],
+  modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "@nuxtjs/sanity"],
+  sanity: {
+    projectId: "your-project-id",
+    dataset: "production",
+    useCdn: true,
+  },
   shadcn: {
     /**
      * Prefix for all the imported component
@@ -14,15 +19,5 @@ export default defineNuxtConfig({
      */
     componentDir: "./components/ui",
   },
-  // Add this section to generate the routes
-  generate: {
-    routes: [
-      "/om-daniel",
-      "/tjanster",
-      "/portfolio",
-      "/blogg",
-      "/podcast",
-      "/kontakt",
-    ],
-  },
+  // The generate section with routes has been removed
 });

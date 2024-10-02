@@ -32,11 +32,12 @@ const toggleMenu = () => {
       <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div class="flex w-full items-center justify-between py-6">
           <div class="flex items-center">
-            <NuxtLink
-              to="/"
-              class="text-2xl font-bold text-gray-900 dark:text-white"
-            >
-              Daniel Westergren
+            <NuxtLink to="/" class="flex items-center">
+              <img
+                src="/logo.png"
+                alt="Daniel Westergren Logo"
+                class="h-8 w-auto"
+              />
             </NuxtLink>
           </div>
           <div class="hidden space-x-6 lg:flex">

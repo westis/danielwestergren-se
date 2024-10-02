@@ -7,14 +7,19 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "sanity": "cd sanity && npm run dev"
   },
   "dependencies": {
+    "@nuxtjs/sanity": "^1.12.1",
+    "@sanity/client": "^6.22.0",
+    "@sanity/vision": "^3.59.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-vue-next": "^0.446.0",
     "nuxt": "^3.13.0",
     "radix-vue": "^1.9.6",
+    "sanity": "^3.59.0",
     "shadcn-nuxt": "^0.10.4",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
