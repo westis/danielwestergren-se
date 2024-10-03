@@ -1,0 +1,31 @@
+*Site*
+- General
+  - Titlte
+  - Logo
+- Navigation
+references to:
+  - Header menu
+  - Footer menu
+  - Social
+
+*Navigation*
+- A list of Navigation menus (used in header, footer, social links etc)
+
+*Redirects*
+- Source (like /studio)
+- Destination (like https://sanitypress.sanity.studio)
+
+*Pages*
+- Title 
+- Modules
+  
+*Blog posts*
+
+with structure helpers like Singleton & Group
+
+Other things under Miscellaneous
+- Logos
+- Testimonials
+
+
+Tab in Sanity Studio for deployment to Netlify (instead of having to go via git on command line)
