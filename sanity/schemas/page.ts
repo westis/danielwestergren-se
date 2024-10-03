@@ -25,9 +25,9 @@ export const pageType = defineType({
       type: "array",
       title: "Page Content",
       of: [
-        defineArrayMember(textWithIllustration),
-        defineArrayMember(form),
-        defineArrayMember(video),
+        defineArrayMember({ type: "textWithIllustration" }),
+        defineArrayMember({ type: "form" }),
+        defineArrayMember({ type: "video" }),
         // Add more block types as needed
       ],
       options: {
@@ -38,17 +38,17 @@ export const pageType = defineType({
             {
               name: "content",
               title: "Content Blocks",
-              of: ["textWithIllustration"],
+              of: ["hero", "textWithIllustration", "gallery"],
             },
             {
               name: "media",
               title: "Media Blocks",
-              of: ["video"],
+              of: ["video", "gallery"],
             },
             {
               name: "callsToAction",
               title: "Call to Action Blocks",
-              of: ["form"],
+              of: ["callToAction", "form"],
             },
           ],
           views: [

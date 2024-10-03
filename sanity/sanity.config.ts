@@ -7,8 +7,7 @@ import { structure } from "./deskStructure";
 import { presentationTool } from "sanity/presentation";
 
 const SANITY_STUDIO_PREVIEW_URL =
-  process.env.SANITY_STUDIO_PREVIEW_URL ||
-  "https://danielwestergrense.netlify.app";
+  process.env.SANITY_STUDIO_PREVIEW_URL || "http://localhost:3000";
 
 export default defineConfig({
   name: "default",

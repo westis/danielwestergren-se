@@ -15,6 +15,8 @@ export default defineNuxtConfig({
     visualEditing: {
       token: process.env.NUXT_SANITY_VISUAL_EDITING_TOKEN,
       studioUrl: process.env.NUXT_SANITY_VISUAL_EDITING_STUDIO_URL,
+      // @ts-ignore
+      allowStudioOrigin: "http://localhost:3333",
     },
   },
   shadcn: {
