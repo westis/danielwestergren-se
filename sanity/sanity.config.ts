@@ -7,7 +7,8 @@ import { structure } from "./deskStructure";
 import { presentationTool } from "sanity/presentation";
 
 const SANITY_STUDIO_PREVIEW_URL =
-  process.env.SANITY_STUDIO_PREVIEW_URL || "http://localhost:3000";
+  process.env.SANITY_STUDIO_PREVIEW_URL ||
+  "https://danielwestergrense.sanity.studio/";
 
 export default defineConfig({
   name: "default",

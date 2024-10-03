@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   modules: [
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
@@ -15,8 +15,6 @@ export default defineNuxtConfig({
     visualEditing: {
       token: process.env.NUXT_SANITY_VISUAL_EDITING_TOKEN,
       studioUrl: process.env.NUXT_SANITY_VISUAL_EDITING_STUDIO_URL,
-      // @ts-ignore
-      allowStudioOrigin: "http://localhost:3333",
     },
   },
   shadcn: {

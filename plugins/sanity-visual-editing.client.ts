@@ -6,7 +6,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   nuxtApp.vueApp.use(() => {
     enableVisualEditing({
-      allowStudioOrigin: "http://localhost:3333", // Add this line
       history: {
         subscribe: (handleNavigate) => {
           return router.afterEach((to) => {
