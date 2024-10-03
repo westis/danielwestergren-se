@@ -51,6 +51,7 @@ onMounted(async () => {
         <div class="md:w-2/3 text-center md:text-start md:ps-8">
           <h1
             class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white"
+            data-sanity-edit-target="hero.title"
           >
             {{ heroData.title }}
           </h1>
